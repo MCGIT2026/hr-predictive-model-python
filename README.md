@@ -1,4 +1,4 @@
-# Projeto RH — Grupo 07 — versão 3.0
+# Projeto RH — versão 3.0
 
 **Data desta revisão:** 21 de outubro de 2026  
 **Problema:** prever se um candidato declara procurar mudar de emprego (`procura_mudanca_emprego`).
