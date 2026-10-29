@@ -1,3 +1,15 @@
+<img width="1195" height="670" alt="image" src="https://github.com/user-attachments/assets/f99677a9-f6ae-4f3b-9fcd-cb743a73ab81" />
+<img width="1176" height="634" alt="image" src="https://github.com/user-attachments/assets/441582bb-2d76-49b2-af63-8866480e2b6a" />
+<img width="1157" height="600" alt="image" src="https://github.com/user-attachments/assets/9f5c824f-629e-4dd9-989d-9d49779e7084" />
+<img width="1143" height="591" alt="image" src="https://github.com/user-attachments/assets/2967b25b-db3a-48b3-840e-785453555243" />
+<img width="1171" height="606" alt="image" src="https://github.com/user-attachments/assets/330f4a69-df20-4549-aa55-7a575de53430" />
+<img width="1164" height="616" alt="image" src="https://github.com/user-attachments/assets/8f990cca-cba7-4f9d-8e2f-2746c32d8010" />
+<img width="1146" height="575" alt="image" src="https://github.com/user-attachments/assets/11a11656-31f0-4cfc-ab4f-7fcdfb97de68" />
+<img width="1142" height="618" alt="image" src="https://github.com/user-attachments/assets/5d8bb7b2-e43a-444a-8b19-c0acfd84a092" />
+<img width="1183" height="604" alt="image" src="https://github.com/user-attachments/assets/87faa3e8-f4c5-4fb5-895a-158f110116d7" />
+<img width="1176" height="606" alt="image" src="https://github.com/user-attachments/assets/e76919fa-6130-4422-92b9-89dc9b1b353a" />
+
+
 # HR Predictive Analytics — Employee Job Change Prediction
 
 A Python-based machine learning project focused on employee job change intention, combining exploratory data analysis, data preparation, classification modeling, and model evaluation.
