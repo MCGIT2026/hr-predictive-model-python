@@ -1,3 +1,5 @@
+# HR Predictive Analytics — Employee Job Change Prediction
+
 <img width="1195" height="670" alt="image" src="https://github.com/user-attachments/assets/f99677a9-f6ae-4f3b-9fcd-cb743a73ab81" />
 <img width="1176" height="634" alt="image" src="https://github.com/user-attachments/assets/441582bb-2d76-49b2-af63-8866480e2b6a" />
 <img width="1157" height="600" alt="image" src="https://github.com/user-attachments/assets/9f5c824f-629e-4dd9-989d-9d49779e7084" />
@@ -10,7 +12,6 @@
 <img width="1176" height="606" alt="image" src="https://github.com/user-attachments/assets/e76919fa-6130-4422-92b9-89dc9b1b353a" />
 
 
-# HR Predictive Analytics — Employee Job Change Prediction
 
 A Python-based machine learning project focused on employee job change intention, combining exploratory data analysis, data preparation, classification modeling, and model evaluation.
 
