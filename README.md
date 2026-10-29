@@ -1,46 +1,152 @@
-# Projeto RH — versão 3.0
+# HR Predictive Analytics — Employee Job Change Prediction
 
-**Data desta revisão:** 21 de outubro de 2026  
-**Problema:** prever se um candidato declara procurar mudar de emprego (`procura_mudanca_emprego`).
+A Python-based machine learning project focused on employee job change intention, combining exploratory data analysis, data preparation, classification modeling, and model evaluation.
 
-Esta é uma revisão posterior à entrega original, preparada como projeto autónomo. Contém três modelos preditivos — regressão logística, árvore de decisão e Random Forest — comparados com um `DummyClassifier` como baseline. Não contém a apresentação PowerPoint.
+The project follows the CRISP-DM methodology to structure the analytical workflow, compare predictive models, and evaluate their ability to identify candidates who declare an intention to change jobs.
 
-## Origem dos dados e alcance
+## Project Overview
 
-O ficheiro `Data/input/Dados_RH_Mudanca_Emprego.csv` foi fornecido/autorizado pela professora como alternativa à recolha própria, conforme confirmação do grupo. O grupo não fez *web scraping* nem recolha por API. A origem anterior ao fornecimento, a licença, a data e o método de amostragem não constam do CSV. O alvo representa intenção declarada, não uma saída efetiva de emprego.
+Understanding job change intentions can support workforce analysis and talent management research.
 
-## Organização
+This project investigates candidate characteristics associated with declared job change intentions and develops a supervised machine learning workflow to predict the target variable `procura_mudanca_emprego`.
 
-| Ficheiro/pasta | Conteúdo |
-| --- | --- |
-| `01_P_business_understanding.ipynb` | Objetivo, questões de negócio, hipóteses, métricas, critérios e limitações. |
-| `02_P_data_understanding.ipynb` | Qualidade, distribuição e padrões exploratórios dos dados. |
-| `03_P_data_preparation.ipynb` | Separação treino/teste, preparação e exportações. |
-| `04_P_modeling.ipynb` | Baseline e comparação dos três modelos por validação cruzada no treino. |
-| `05_P_evaluation.ipynb` | Avaliação do vencedor, critérios de sucesso, erros e variáveis relevantes. |
-| `06_P_deployment.ipynb` | Demonstração de previsão em lote e exportação de resultados. |
-| `preparacao_rh.py` | Função de preparação usada pelos pipelines. |
-| `Data/input/` | CSV original fornecido/autorizado. |
-| `Data/analytics/` | Gráficos produzidos pelos notebooks. |
-| `Data/output/` | Divisões de dados, comparação, avaliação, previsões e relatórios de validação. |
-| `Data/models/` | Pipeline final e metadados. |
+**Main objectives:**
+- Explore and understand the dataset.
+- Assess data quality and prepare analytical features.
+- Establish a baseline and compare classification models.
+- Evaluate predictive performance using appropriate metrics.
+- Document a reproducible end-to-end analytical workflow.
 
-## Como executar
+## Methodology
 
-Foi validado com Python 3.14.7 e as versões em `requirements.txt`. A partir da pasta deste projeto, instalar as dependências com `python -m pip install -r requirements.txt`, iniciar Jupyter e executar os notebooks por ordem, de 01 a 06, usando essa instalação de Python. Para verificar a consistência dos ficheiros exportados, executar `python validar_entrega.py` na mesma pasta.
+The project follows six stages inspired by the CRISP-DM methodology.
 
-Os notebooks incluídos já estão executados e os ficheiros em `Data/` foram gerados de novo nesta versão. Uma nova execução pode atualizar carimbos de data e recriar gráficos/exportações.
+| Stage | Description |
+|---|---|
+| Business Understanding | Define the business problem, objectives, hypotheses, evaluation criteria, and limitations. |
+| Data Understanding | Explore data quality, distributions, and relationships between variables. |
+| Data Preparation | Prepare the data and establish training and test datasets. |
+| Modeling | Train and compare classification algorithms against a baseline. |
+| Evaluation | Assess model performance and examine classification errors. |
+| Deployment | Demonstrate batch prediction and export analytical outputs. |
 
-## Resultado resumido
+## Dataset
 
-O conjunto tem 19 158 registos. A separação estratificada usa 15 326 para treino e 3 832 para teste. O modelo foi escolhido **pela média do F1 da classe Sim em cinco folds de validação cruzada no treino**, com limiar de classificação 0,50 predefinido. Não se escolheu o modelo pelos resultados no teste.
+- **Number of observations:** 19,158
+- **Target variable:** `procura_mudanca_emprego`
+- **Training set:** 15,326 observations
+- **Test set:** 3,832 observations
 
-| Candidato | F1 médio na validação cruzada |
-| --- | ---: |
-| Baseline | 0,000 |
-| Regressão logística | 0,466 |
-| Árvore de decisão | 0,611 |
-| Random Forest | **0,618** |
+The dataset was provided for the course project. Its original upstream source, sampling methodology, and redistribution licence have not been independently established.
 
-O Random Forest foi o selecionado. No teste desta versão, obteve **recall 0,746**, **F1 0,605** e **ROC-AUC 0,785**, acima das metas numéricas pedagógicas (0,60; 0,50; 0,75). As métricas e a matriz de confusão exatas estão em `Data/output/RH_Mudanca_Emprego_resumo_validado.json`.
+The target represents a declared intention to change jobs, not actual employee turnover. Results should therefore be interpreted within this scope.
 
+## Modeling Approach
+
+Four classification approaches were evaluated:
+
+- Dummy Classifier — baseline
+- Logistic Regression
+- Decision Tree
+- Random Forest
+
+Model selection was based on the mean F1-score for the positive class across five-fold cross-validation on the training set, using a classification threshold of 0.50.
+
+The test set was reserved for the final evaluation of the selected model.
+
+## Results
+
+### Cross-validation comparison
+
+| Model | Mean F1-score |
+|---|---:|
+| Dummy Classifier | 0.000 |
+| Logistic Regression | 0.466 |
+| Decision Tree | 0.611 |
+| **Random Forest** | **0.618** |
+
+Random Forest achieved the highest mean F1-score across the evaluated models and was selected for further evaluation.
+
+### Final test-set performance
+
+| Metric | Score |
+|---|---:|
+| Recall | 0.746 |
+| F1-score | 0.605 |
+| ROC-AUC | 0.785 |
+
+These results show that the selected model identifies a meaningful proportion of positive cases in the test set. Performance should also be considered alongside false positives, false negatives, class distribution, and the intended application.
+
+The reported scores are experimental results and do not establish production readiness or real-world business impact.
+
+## Technical Skills Demonstrated
+
+- **Python** — analytical workflow and model development
+- **Pandas** — data manipulation and preparation
+- **Scikit-learn** — preprocessing, classification, cross-validation, and evaluation
+- **Exploratory Data Analysis** — distributions, data quality, and feature exploration
+- **Machine Learning** — baseline comparison and supervised classification
+- **Model Evaluation** — F1-score, recall, and ROC-AUC
+- **Jupyter Notebook** — documented analytical workflow
+- **Data Visualization** — graphical exploration and presentation of findings
+
+## Repository Structure
+
+```text
+hr-predictive-model-python/
+├── README.md
+├── requirements.txt
+├── preparacao_rh.py
+├── 01_P_business_understanding.ipynb
+├── 02_P_data_understanding.ipynb
+├── 03_P_data_preparation.ipynb
+├── 04_P_modeling.ipynb
+├── 05_P_evaluation.ipynb
+└── 06_P_deployment.ipynb
+```
+
+The notebooks document the analytical workflow from business understanding to prediction and evaluation. Supporting datasets, generated outputs, and model artifacts can be maintained separately where appropriate.
+
+## How to Run
+
+### 1. Install Python
+
+Install a compatible Python version and create a virtual environment if desired.
+
+### 2. Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 3. Launch Jupyter Notebook
+
+```bash
+python -m pip install jupyter
+jupyter notebook
+```
+
+### 4. Execute the workflow
+
+Run the notebooks in numerical order, from `01` to `06`.
+
+The original dataset and any required supporting files must be available in the expected locations before execution.
+
+## Limitations and Future Improvements
+
+- Verify the original dataset source, representativeness, and permitted use.
+- Evaluate generalization using independent datasets or different time periods.
+- Investigate precision-recall trade-offs and alternative classification thresholds.
+- Assess potential bias and the implications of candidate-level predictions in HR contexts.
+- Improve reproducibility through automated tests, data validation, and documented dependencies.
+- Explore additional models and compare performance using business-relevant evaluation criteria.
+
+## Conclusion
+
+This project demonstrates an end-to-end supervised learning workflow applied to an HR analytics problem, combining business understanding, exploratory data analysis, data preparation, model comparison, and evaluation.
+
+Random Forest achieved the strongest cross-validation F1-score among the evaluated approaches, providing a basis for further investigation into predicting declared job change intentions.
+
+---
+
+*Python & Data Analytics Portfolio Project*
